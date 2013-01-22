@@ -7,7 +7,7 @@
 
 
 var ARC = (function(r, $) {
-	//::HOOK:: toggle the which line below is commented out to switch between test and production environments
+	//::HOOK:: toggle which line below is commented out to switch between test and production environments
 	//r.arcBaseUrl = 'http://arc-dev.dagher.mobi/rest/v1';	// USE FOR TESTING
 	r.arcBaseUrl = 'https://arc.dagher.mobi/rest/v1';			// USE FOR PRODUCTION
 
@@ -71,6 +71,7 @@ var ARC = (function (r, $) {
           //RSKYBOX.log.debug('entering', 'html5.getToken.errorHandler');
           //if (jqXHR.responseText) { return; }  // This is an apiError which is handled by statusCodeHandlers below.
 					//alert(r.serverError);
+					RSKYBOX.log.error("server error", "html5.createCustomer.errorHandler");
         } catch (e) {
 					RSKYBOX.log.error("exception = " + e.message, "html5.createCustomer.errorHandler");
         }
@@ -162,6 +163,7 @@ var ARC = (function (r, $) {
           //RSKYBOX.log.debug('entering', 'html5.getToken.errorHandler');
           //if (jqXHR.responseText) { return; }  // This is an apiError which is handled by statusCodeHandlers below.
 					//alert(r.serverError);
+					RSKYBOX.log.error("server error", "html5.getToken.errorHandler");
         } catch (e) {
 					RSKYBOX.log.error("exception = " + e.message, "html5.getToken.errorHandler");
         }
@@ -235,6 +237,7 @@ var ARC = (function (r, $) {
           //RSKYBOX.log.debug('entering', 'html5.updateCustomer.errorHandler');
           //if (jqXHR.responseText) { return; }  // This is an apiError which is handled by statusCodeHandlers below.
 					//alert(r.serverError);
+					RSKYBOX.log.error("serverl error", "html5.updateCustomer.errorHandler");
         } catch (e) {
 					RSKYBOX.log.error("exception = " + e.message, "html5.updateCustomer.errorHandler");
         }

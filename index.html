@@ -51,15 +51,44 @@
 	<script>
 			$(document).ready(function() {
 				$(".register_btn").click(function() {
-					var firstName = $('#firstname').val();
-					var lastName = $('#lastname').val();
-					var email = $('#email').val();
-					var password = $('#password').val();
-					var birthDate = $('#dob').val();				// must be in YYYY-MM-DD format!
-					var notifications = false;							// on website, just hard code to 'false'
-					var facebook = false;										// on website, just hard code to 'false'
-					var twitter = false;										// on website, just hard code to 'false'
-					var acceptTerms = true;									// on website, just hard code to 'true'
+					var firstName = $.trim($('#firstname').val()); 
+					var lastName = $.trim($('#lastname').val());
+					var email = $.trim($('#email').val());
+					var password = $.trim($('#password').val());
+					var confirmPassword = $.trim($('#confirmPassword').val());
+					var birthDate = null;
+					//var birthDate = $.trim($('#dob').val());		// must be in YYYY-MM-DD format!
+					var notifications = false;										// on website, just hard code to 'false'
+					var facebook = false;													// on website, just hard code to 'false'
+					var twitter = false;													// on website, just hard code to 'false'
+					var acceptTerms = true;												// on website, just hard code to 'true'
+
+					////////////////
+					// Validate Form
+					////////////////
+					var at = "@";
+					var dot = ".";
+					if (email == "" || email.indexOf(at)==-1 || email.indexOf(dot)==-1) {
+						alert("email address invalid");
+						return false;
+					}
+					if (firstName == "") {
+						alert("first name is required");
+						return false;
+					}
+					if (lastName == "") {
+						alert("last name is required");
+						return false;
+					}
+					if (password == "" || confirmPassword == "") {
+						alert("both password and password confirmation are required");
+						return false;
+					}
+					if (password != confirmPassword) {
+						alert("password and password confirmation do not match");
+						return false;
+					}
+
 					ARC.createCustomer.run(firstName, lastName, email, password, birthDate, notifications, facebook, twitter, acceptTerms);
 					return false;
 				});
@@ -158,9 +187,9 @@ Arc is a revolutionary Mobile Payment Platform that empowers consumers and merch
                 	<input type="text" id="firstname" value="" placeholder="first name">
                 	<input type="text" id="lastname" value="" placeholder="last name">
                 	<input type="email" id="email" value="" placeholder="email address">
-                	<input type="text" id="dob" value="" placeholder="date of birth">
+                	<!-- <input type="text" id="dob" value="" placeholder="date of birth"> -->
                 	<input type="password" id="password" value="" placeholder="password">                    
-                	<input type="password" id="password" value="" placeholder="confirm password">                    
+                	<input type="password" id="confirmPassword" value="" placeholder="confirm password">                    
             		<p class="small">Once Registered all you have to do is download the app, login in using the Email and password you entered above and enter in your preferred payment  method and then you are ready to begin making payments via Arc!</p>
                     <button class="register_btn submit_btn">Complete Registration</button>
                 </form> 
