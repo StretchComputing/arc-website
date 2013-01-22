@@ -1,0 +1,249 @@
+<!doctype html>  
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ --> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+    Remove this if you use the .htaccess -->
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+ 	<title>Arc Mobile- The Future of Mobile Payments</title>
+ 	<meta name="description" content="">
+ 	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <link rel="shortcut icon" href="/favicon.ico">
+ 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	<!-- CSS : implied media="all" -->
+	<link rel="stylesheet" href="css/reset.css">
+ 	<link rel="stylesheet" href="css/main.css">
+ 	<link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="css/datepicker.css">
+    <style>
+	#map_canvas{
+		width:470px;
+		height:400px;	
+		color:#000;
+	}
+	</style>
+
+
+	<script src="js/libs/modernizr-1.6.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
+    <script src="js/jquery-ui-1.8.9.custom.min.js"></script>
+    
+	<!-- Arc API's -->
+	<script src="js/underscore-min.js"></script>
+    <script src="js/backbone-min.js"></script>
+    <script src="js/cookie.js"></script>
+    <script src="js/rskybox.js"></script>
+    <script src="js/rskybox-config.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/customer.js"></script>
+    <script src="js/arc-interface.js"></script>
+    <script src="js/arc-api.js"></script>    
+	<script>
+			$(document).ready(function() {
+				$(".register_btn").click(function() {
+					var firstName = $('#firstname').val();
+					var lastName = $('#lastname').val();
+					var email = $('#email').val();
+					var password = $('#password').val();
+					var birthDate = $('#dob').val();				// must be in YYYY-MM-DD format!
+					var notifications = false;							// on website, just hard code to 'false'
+					var facebook = false;										// on website, just hard code to 'false'
+					var twitter = false;										// on website, just hard code to 'false'
+					var acceptTerms = true;									// on website, just hard code to 'true'
+					ARC.createCustomer.run(firstName, lastName, email, password, birthDate, notifications, facebook, twitter, acceptTerms);
+					return false;
+				});
+				$(".login_btn").click(function() {
+					var email = $('#login_email').val();
+					var password = $('#login_password').val();
+					ARC.getToken.run(email, password);
+					return false;
+				});
+				$(".logout_client_btn").click(function() {
+					ARC.updateCustomer.run("I");
+					return false;
+				});
+			});
+	</script>    
+    
+    <!-- Display Related JS -->
+    <script src="js/jquerycycles.js"></script>
+    <script src="js/jqueryeasing.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyDWI885TRQQ8ain8i_kdcWqyaJTPOtxV-M&sensor=false" type="text/javascript"></script>
+    
+    
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37548108-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    
+</head>
+
+<body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+ 	 var js, fjs = d.getElementsByTagName(s)[0];
+ 	 if (d.getElementById(id)) return;
+ 	 js = d.createElement(s); js.id = id;
+ 	 js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+ 	 fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+	<!-- background sliding images -->
+	<ul class="cb-slideshow">
+    	<li><span>Image 01</span><div><h3>the future is here</h3></div></li>
+        <li><span>Image 02</span><div><h3>enter the check number</h3></div></li>
+        <li><span>Image 03</span><div><h3>view the bill</h3></div></li>
+        <li><span>Image 04</span><div><h3>split the check</h3></div></li>
+        <li><span>Image 05</span><div><h3>fin</h3></div></li>
+	</ul>
+
+
+	<div id="container">
+       	<div id="main">
+	    	<header>
+				<nav>
+		   			<a class="custom" id="home"><img src="images/arc_logo.png" class="logo"></a>                
+    				<ul id="primary">
+						<li><a class="custom" id="c1">What is Arc</a></li>
+						<li><a class="custom" id="c2">Where is Arc</a></li>
+						<li><a class="custom" id="c3">Arc for Merchants</a></li>
+						<li><a class="custom" id="c4">Contact Us</a></li>
+						<li><a class="custom" id="login_screen">Login</a></li>
+					</ul>
+    				<div class="clearfix"></div>
+    			</nav>
+		    </header>
+            
+			<!--Home Section -->
+            <article class="home">
+            	<div class="hideBox">[hide]</div>            
+            	<h2>The Future of Mobile Payments</h2>
+            	<p style="text-align:center;"><span style="font-size:18px;">Split and pay your bill easily and efficiently.</span> <br><br>
+Arc is a revolutionary Mobile Payment Platform that empowers consumers and merchants with direct and secure payments all in the palm of their hand. We take the headache out of the payment process by making it faster, cheaper and more secure for both consumers and merchants. </p>
+                <div class="home_buttons">
+                	<a href="https://itunes.apple.com/us/app/arc/id563542097?mt=8"><button class="app">Download the App</button></a>
+               	 	<a class="custom" id="register"><button>Register/Learn More</button></a>
+                </div>
+            </article>
+            
+            
+			<!-- Register Section -->
+            <article class="register">
+            	<div class="hideBox">[hide]</div>                        
+            	<h2>You are Almost ready to<br>Join the Arc Revolution</h2>
+            	<p>Even if you just want more information on Arc, just enter in the information below and you will receive a welcome packet in your email!</p>
+                <form id="signup" action="" method="post">
+                	<input type="text" id="firstname" value="" placeholder="first name">
+                	<input type="text" id="lastname" value="" placeholder="last name">
+                	<input type="email" id="email" value="" placeholder="email address">
+                	<input type="text" id="dob" value="" placeholder="date of birth">
+                	<input type="password" id="password" value="" placeholder="password">                    
+                	<input type="password" id="password" value="" placeholder="confirm password">                    
+            		<p class="small">Once Registered all you have to do is download the app, login in using the Email and password you entered above and enter in your preferred payment  method and then you are ready to begin making payments via Arc!</p>
+                    <button class="register_btn submit_btn">Complete Registration</button>
+                </form> 
+               	<a class="go_to_login"><button>Login to my account</button></a>
+            </article>        
+            
+            
+            
+			<!-- Login Section -->
+            <article class="login_screen">
+            	<h2>Login</h2>
+                <form id="login" action="" method="post">
+                	<input type="email" id="login_email" value="" placeholder="email address">
+                	<input type="password" id="login_password" value="" placeholder="password">                    
+                    <button class="login_btn submit_btn">Login</button>
+                </form>
+                <button class='logout_client_btn submit_btn'>Logout from Phone</button> 
+            </article>                        
+            
+			<!-- What is Arc -->
+            <article class="c1">
+            	<div class="hideBox">[hide]</div>                        
+            	<h2>What is Arc</h2>
+            	<p><strong class="bigger">What:</strong> A revolutionary mobile payment platform which improves the payment process top to bottom for both the merchant and consumer. From restaurants and landlords to doctor's offices and utilities providers, Arc is the smart payment solution for any service provider.</p>
+<p><strong class="bigger">How:</strong> Research. Based on the pains of payment processes, we built an innovative, efficient, and secure platform that links the merchants that you buy from to you and your mobile phone.</strong></p>
+<p><strong class="bigger">Why:</strong> Fast. Secure. Efficient. Need to split the bill by cost? Percentage? Individual items? No problem, Arc is loaded with key features to make your payments easier.<br>
+Need more reasons? Arc enables you to leave real-time feedback for the merchant and we reward you with Arc Rewards for each transaction. For every 1000 points you earn, we'll throw $10 in your bank account or towards credit on your next bill. </p>
+<p><strong class="bigger">When:</strong> Launching 2013 in Chicago! </p>
+				<a href=""><button>See Arc in Action!</button></a>
+            </article>
+
+
+			<!-- Where is Arc -->
+            <article class="c2">
+            	<div class="hideBox">[hide]</div>            
+            	<h2>Where is Arc</h2>  
+                <!--
+                somethings up with Google Maps, using static image for now          
+                <div id="map_canvas" style="width:470px; height:400px;"></div>
+                -->
+                <img src="http://maps.google.com/staticmap?center=41.88908,-87.63165&zoom=15&size=470x400&maptype=mobile&markers=41.88908,-87.63165,red&key=AIzaSyDWI885TRQQ8ain8i_kdcWqyaJTPOtxV-M&sensor=false" />
+            </article>
+            
+     		<!-- Arc for Merchants -->
+            <article class="c3">
+            	<div class="hideBox">[hide]</div>
+            	<h2>Arc was built by<br>Merchants for Merchants</h2>
+               	<p><strong>Save Money.</strong> Arc's strategic partnership with Dwolla empowers us to provide merchants the ability to accept ACH payments as easily as credit or cash. And, an ACH payment through Arc comes with a flat surcharge of $0.75 –about 76% less than that of the average credit card provider. </p>
+				<p><strong>Save Face.</strong> Real-time consumer feedback enables merchants to take any corrective or affirmative action before the consumer has reached the door. Consumers are prompted and encouraged to leave feedback as soon as the payment is complete.</p>
+				<p><strong>Save Time.</strong> From bill splitting to quick and secure credit card acceptance, Arc's special features are designed to save your business time and make the payment process easier. <br>
+<br>
+Arc gives restaurant customers the power to split their own bill, so servers can spend less time at the POS system and more time at their tables. And, when a consumer pays with a credit card, Arc sends the information directly to your POS, so your team is free to get back to work. </p>
+				<p><strong>Smart payment for smart businesses, </strong><a class="custom" id="c4"><u>Contact Arc today.</u></a></p>
+            </article>
+            
+     		<!-- Contact Us -->            
+            <article class="c4">
+            	<div class="hideBox">[hide]</div>            
+            	<h2>We are always looking<br>for ideas and feedback!</h2>            
+                <form id="contact" action="" method="post">
+                	<input type="text" id="name" value="" placeholder="name">
+                	<input type="email" id="email" value="" placeholder="email address">
+                	<input type="text" id="subject" value="" placeholder="subject">
+                	<textarea id="comments" value="" placeholder="what's up?"></textarea>
+                    <button class="submit_btn">submit</button>
+                </form>     
+             </article>                                    
+    
+		</div> <!-- end main-->
+    </div>  <!-- end container -->
+	
+    <footer>
+		<nav>
+    		<ul id="footer">
+	    		<li><a href="https://www.facebook.com/ArcMobileApp" target="_blank"><img src="images/f_logo.png" height="22"></a></li>
+    	        <li><div class="fb-like" data-href="https://www.facebook.com/ArcMobileApp" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div></li>
+    			<li><a href="https://twitter.com/arcmobileapp" target="_blank"><img src="images/twitter-bird-dark-bgs.png" height="22"></a></li>
+                <li><a href="https://twitter.com/arcmobileapp" class="twitter-follow-button" data-show-count="false">Follow @arcmobileapp</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></li>
+			</ul>
+			<div class="clearfix"></div>
+		</nav>            
+	</footer>
+
+</body>
+</html>
