@@ -25,7 +25,7 @@
  	<link rel="stylesheet" href="css/style1.css">
     <link rel="stylesheet" href="css/datepicker.css">
     <style>
-	#map_canvas{
+	#map{
 		width:470px;
 		height:400px;	
 		color:#000;
@@ -106,10 +106,8 @@
 	</script>    
     
     <!-- Display Related JS -->
-    <script src="js/jquerycycles.js"></script>
-    <script src="js/jqueryeasing.js"></script>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyAjti80lDRNi74Ol2lSUKYtoTH-OUm6lqI&sensor=false" type="text/javascript"></script>
     <script src="js/scripts.js"></script>
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyDWI885TRQQ8ain8i_kdcWqyaJTPOtxV-M&sensor=false" type="text/javascript"></script>
     
     
 
@@ -239,11 +237,7 @@ Check us out at Untitled (111 W Kinzie) and Union Sushi (230 W Erie).
             <article class="c2">
             	<div class="hideBox">[hide]</div>            
             	<h2>Where is Arc</h2>  
-                <!--
-                somethings up with Google Maps, using static image for now          
-                <div id="map_canvas" style="width:470px; height:400px;"></div>
-                -->
-                <img src="http://maps.google.com/staticmap?center=41.88908,-87.63165&zoom=15&size=470x400&maptype=mobile&markers=41.88908,-87.63165,red&key=AIzaSyDWI885TRQQ8ain8i_kdcWqyaJTPOtxV-M&sensor=false" />
+                <div id="map" style="width:470px; height:400px;"></div>
             </article>
             
      		<!-- Arc for Merchants -->
@@ -294,6 +288,11 @@ Contact Arc Today on team@arcmobileapp.com
     			<li><a href="https://twitter.com/arcmobileapp" target="_blank"><img src="images/twitter-bird-dark-bgs.png" height="22"></a></li>
                 <li><a href="https://twitter.com/arcmobileapp" class="twitter-follow-button" data-show-count="false">Follow @arcmobileapp</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></li>
+				<li><img src="images/crain_s-header.jpg" class="sponsor"></li>
+				<li><img src="images/vc.jpg" class="sponsor"></li>        
+                <li><a href="http://techweek.com/chicago/events/techweek-launch//"><img src="http://techweek.com/images/badges/TW2013_badge_launch.png" border=0 style="height: 40px;" alt="Techweek LAUNCH"></a>
+
+</li>       
 			</ul>
 			<div class="clearfix"></div>
 		</nav>            

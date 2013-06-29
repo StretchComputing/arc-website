@@ -266,7 +266,7 @@ article p strong.bigger{
 
 /***************Google Maps***************/
 
-#map_canvas{
+#map{
 		width:470px;
 		height:400px;	
 		color:#000;
@@ -355,19 +355,19 @@ footer{
 
 ul#footer{
 	margin:0px auto;
-	height:30px;
-	width:350px;
 	text-align:center;
 	list-style:none;
+	padding-top:0px;
 }
 
 #footer li{
-	float:left;
+	display:inline-block;
 	text-align:center;
 	margin:0px 10px;
 }
 
-
+.sponsor{
+}
 
 /********STICKY FOOTER**************/
 
@@ -376,11 +376,11 @@ html, body {height: 100%; overflow:hidden;}
 #container {min-height: 100%;}
 
 #main {overflow:auto;
-	padding-bottom: 50px;}  /* must be same height as the footer */
+	padding-bottom: 55px;}  /* must be same height as the footer */
 
 footer {position: relative;
-	margin-top: -50px; /* negative value of footer height */
-	height: 50px;
+	margin-top: -55px; /* negative value of footer height */
+	height: 55px;
 	clear:both;} 
 
 /*Opera Fix*/
