@@ -241,6 +241,8 @@ var RSKYBOX = (function (r, $) {
           summary: r.config.getSummary(),
           instanceUrl: r.config.getInstanceUrl(),
           appActions: getAppActions(),
+					localEndpoint: 'prd.dutch.html5',
+					remoteEndpoint: r.arcServerUrl
         };
 
         // Error level logs generall have an Error object as the message.
@@ -259,6 +261,7 @@ var RSKYBOX = (function (r, $) {
         $.ajax({
           type: 'POST',
           data: JSON.stringify(attrs),
+					contentType: 'application/json',
           url: getUrl(),
           error: function (jqXHR, textStatus, errorThrown) {
             try {
@@ -421,6 +424,7 @@ var RSKYBOX = (function (r, $) {
         $.ajax({
           type: 'POST',
           data: JSON.stringify(attrs),
+					contentType: 'application/json',
           url: getUrl(),
           error: r.config.enduser.errorHandler,
           success: r.config.enduser.successHandler,

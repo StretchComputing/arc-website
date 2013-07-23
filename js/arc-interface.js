@@ -8,8 +8,9 @@
 
 var ARC = (function(r, $) {
 	//::HOOK:: toggle which line below is commented out to switch between test and production environments
-	//r.arcBaseUrl = 'http://arc-dev.dagher.mobi/rest/v1';	// USE FOR TESTING
-	r.arcBaseUrl = 'https://arc.dagher.mobi/rest/v1';			// USE FOR PRODUCTION
+	//r.arcServerUrl = 'http://arc-dev.dagher.mobi';	// USE FOR TESTING
+	r.arcServerUrl = 'https://arc.dagher.mobi';	  		// USE FOR PRODUCTION
+	r.arcBaseUrl = r.arcServerUrl + '/rest/v1';
 
 	return r;
 })(ARC || {}, jQuery);
@@ -59,7 +60,7 @@ var ARC = (function (r, $) {
 
 
         } catch (e) {
-					RSKYBOX.log.error("exception = " + e.message, "html5.createCustomer.successHandler");
+					RSKYBOX.log.error("exception = " + e.message, "createCustomer.successHandler");
         }
       },
 
@@ -68,12 +69,12 @@ var ARC = (function (r, $) {
       errorHandler: function (jqXHR, textStatus, errorThrown) {
         try {
 					// TODO not sure how to differentiate between a 422 and other types of errors. Code below did NOT work
-          //RSKYBOX.log.debug('entering', 'html5.getToken.errorHandler');
+          //RSKYBOX.log.debug('entering', 'getToken.errorHandler');
           //if (jqXHR.responseText) { return; }  // This is an apiError which is handled by statusCodeHandlers below.
 					//alert(r.serverError);
-					RSKYBOX.log.error("server error", "html5.createCustomer.errorHandler");
+					RSKYBOX.log.error("server error", "createCustomer.errorHandler");
         } catch (e) {
-					RSKYBOX.log.error("exception = " + e.message, "html5.createCustomer.errorHandler");
+					RSKYBOX.log.error("exception = " + e.message, "createCustomer.errorHandler");
         }
       },
 
@@ -91,7 +92,7 @@ var ARC = (function (r, $) {
 						if(errorCodes.length > 0) {
 							code = errorCodes[0].Code;
 						}
-						RSKYBOX.log.debug('code = ' + code, 'html5.createCustomer.statusCodeHandlers');
+						RSKYBOX.log.debug('code = ' + code, 'createCustomer.statusCodeHandlers');
 
             if (code === 103) {
 							// ===> ::HOOK:: <put client code here to handle 'User already exists' error>
@@ -102,10 +103,10 @@ var ARC = (function (r, $) {
             } else {
 							// ===> ::HOOK:: <server error -- display string in 'r.serverError' somewhere on the screen>
 							alert(r.serverError);
-              RSKYBOX.log.debug('Undefined apiStatus: ' + code, 'html5.createCustomer.statusCodeHandlers');
+              RSKYBOX.log.debug('Undefined apiStatus: ' + code, 'createCustomer.statusCodeHandlers');
 						}
           } catch (e) {
-						RSKYBOX.log.error("exception = " + e.message, "html5.createCustomer.statusCodeHandlers");
+						RSKYBOX.log.error("exception = " + e.message, "createCustomer.statusCodeHandlers");
           }
         }
       }
@@ -151,7 +152,7 @@ var ARC = (function (r, $) {
 					$('.logout_client_btn').show(); 
 
         } catch (e) {
-					RSKYBOX.log.error("exception = " + e.message, "html5.getToken.successHandler");
+					RSKYBOX.log.error("exception = " + e.message, "getToken.successHandler");
         }
       },
 
@@ -160,12 +161,12 @@ var ARC = (function (r, $) {
       errorHandler: function (jqXHR, textStatus, errorThrown) {
         try {
 					// TODO not sure how to differentiate between a 422 and other types of errors. Code below did NOT work
-          //RSKYBOX.log.debug('entering', 'html5.getToken.errorHandler');
+          //RSKYBOX.log.debug('entering', 'getToken.errorHandler');
           //if (jqXHR.responseText) { return; }  // This is an apiError which is handled by statusCodeHandlers below.
 					//alert(r.serverError);
-					RSKYBOX.log.error("server error", "html5.getToken.errorHandler");
+					RSKYBOX.log.error("server error", "getToken.errorHandler");
         } catch (e) {
-					RSKYBOX.log.error("exception = " + e.message, "html5.getToken.errorHandler");
+					RSKYBOX.log.error("exception = " + e.message, "getToken.errorHandler");
         }
       },
 
@@ -183,7 +184,7 @@ var ARC = (function (r, $) {
 						if(errorCodes.length > 0) {
 							code = errorCodes[0].Code;
 						}
-						RSKYBOX.log.debug('code = ' + code, 'html5.getToken.statusCodeHandlers');
+						RSKYBOX.log.debug('code = ' + code, 'getToken.statusCodeHandlers');
 
             if (code === 106) {
 							// ===> ::HOOK:: <put client code here to handle 'Incorrect login/password' error>
@@ -191,10 +192,10 @@ var ARC = (function (r, $) {
 						} else {
 							// ===> ::HOOK:: <server error -- display string in 'r.serverError' somewhere on the screen>
 							alert(r.serverError);
-              RSKYBOX.log.debug('Undefined apiStatus: ' + code, 'html5.getToken.statusCodeHandlers');
+              RSKYBOX.log.debug('Undefined apiStatus: ' + code, 'getToken.statusCodeHandlers');
 						}
           } catch (e) {
-						RSKYBOX.log.error("exception = " + e.message, "html5.getToken.statusCodeHandlers");
+						RSKYBOX.log.error("exception = " + e.message, "getToken.statusCodeHandlers");
           }
         }
       }
@@ -225,7 +226,7 @@ var ARC = (function (r, $) {
 					alert("updated");
 
         } catch (e) {
-					RSKYBOX.log.error("exception = " + e.message, "html5.updateCustomer.successHandler");
+					RSKYBOX.log.error("exception = " + e.message, "updateCustomer.successHandler");
         }
       },
 
@@ -234,12 +235,12 @@ var ARC = (function (r, $) {
       errorHandler: function (jqXHR, textStatus, errorThrown) {
         try {
 					// TODO not sure how to differentiate between a 422 and other types of errors. Code below did NOT work
-          //RSKYBOX.log.debug('entering', 'html5.updateCustomer.errorHandler');
+          //RSKYBOX.log.debug('entering', 'updateCustomer.errorHandler');
           //if (jqXHR.responseText) { return; }  // This is an apiError which is handled by statusCodeHandlers below.
 					//alert(r.serverError);
-					RSKYBOX.log.error("serverl error", "html5.updateCustomer.errorHandler");
+					RSKYBOX.log.error("serverl error", "updateCustomer.errorHandler");
         } catch (e) {
-					RSKYBOX.log.error("exception = " + e.message, "html5.updateCustomer.errorHandler");
+					RSKYBOX.log.error("exception = " + e.message, "updateCustomer.errorHandler");
         }
       },
 
@@ -257,13 +258,13 @@ var ARC = (function (r, $) {
 						if(errorCodes.length > 0) {
 							code = errorCodes[0].Code;
 						}
-						RSKYBOX.log.debug('code = ' + code, 'html5.updateCustomer.statusCodeHandlers');
+						RSKYBOX.log.debug('code = ' + code, 'updateCustomer.statusCodeHandlers');
 
 						// ===> ::HOOK::  <server error -- display string in 'r.serverError' somewhere on the screen>
 
 
           } catch (e) {
-						RSKYBOX.log.error("exception = " + e.message, "html5.getToken.statusCodeHandlers");
+						RSKYBOX.log.error("exception = " + e.message, "getToken.statusCodeHandlers");
           }
         }
       }

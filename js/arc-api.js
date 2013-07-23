@@ -50,7 +50,7 @@ var ARC = (function(r, $) {
                         statusCode: r.interface.createCustomer.statusCodeHandlers
                     });
         } catch(e) {
-            RSKYBOX.log.error("run exception = " + e.message, "html5.createCustomer.run");
+            RSKYBOX.log.error("run exception = " + e.message, "createCustomer.run");
         }
     }
 
@@ -93,7 +93,7 @@ var ARC = (function(r, $) {
           statusCode: r.interface.getToken.statusCodeHandlers
         });
 			} catch(e) {
-				RSKYBOX.log.error("run exception = " + e.message, "html5.getToken.run");
+				RSKYBOX.log.error("run exception = " + e.message, "getToken.run");
 			}
 		}
 
@@ -138,7 +138,7 @@ var ARC = (function(r, $) {
                         headers: {'Authorization' : r.getAuthorizationHeader()}
                     });
         } catch(e) {
-            RSKYBOX.log.error("run exception = " + e.message, "html5.updateCustomer.run");
+            RSKYBOX.log.error("run exception = " + e.message, "updateCustomer.run");
         }
     }
 
@@ -159,7 +159,7 @@ var ARC = (function(r, $) {
 			//return Cookie.get('arcToken');
 			return r.store.getItem('arcToken');
 		} catch(e) {
-			RSKYBOX.log.error("run exception = " + e.message, "html5.getAuthoriationHeader");
+			RSKYBOX.log.error("run exception = " + e.message, "getAuthoriationHeader");
 		}
 	};
 
@@ -171,7 +171,7 @@ var ARC = (function(r, $) {
 			//Cookie.set('arcToken', encodedToken, 24, '/');
 			r.store.setItem('arcToken', authHeader);
 		} catch(e) {
-			RSKYBOX.log.error("run exception = " + e.message, "html5.storeAuthoriationHeader");
+			RSKYBOX.log.error("run exception = " + e.message, "storeAuthoriationHeader");
 		}
 	};
 
@@ -180,7 +180,7 @@ var ARC = (function(r, $) {
 			var stringToEncode = "customer:" + token;
 			return r.Base64.encode(stringToEncode);
 		} catch(e) {
-			RSKYBOX.log.error("run exception = " + e.message, "html5.encodeToken");
+			RSKYBOX.log.error("run exception = " + e.message, "encodeToken");
 		}
 	};
 
@@ -216,7 +216,7 @@ var ARC = (function(r, $) {
 				}
 				return output;
 			} catch(e) {
-				RSKYBOX.log.error("run exception = " + e.message, "html5.Base64.encode");
+				RSKYBOX.log.error("run exception = " + e.message, "Base64.encode");
 			}
 		},
 			
@@ -253,7 +253,7 @@ var ARC = (function(r, $) {
 				output = r.Base64._utf8_decode(output);
 				return output;
 			} catch(e) {
-				RSKYBOX.log.error("run exception = " + e.message, "html5.Base64.decode");
+				RSKYBOX.log.error("run exception = " + e.message, "Base64.decode");
 			}
 		},
 			
@@ -278,7 +278,7 @@ var ARC = (function(r, $) {
 				}
 				return utftext;
 			} catch(e) {
-				RSKYBOX.log.error("run exception = " + e.message, "html5.Base64._utf8_encode");
+				RSKYBOX.log.error("run exception = " + e.message, "Base64._utf8_encode");
 			}
 		},
 			
@@ -308,7 +308,7 @@ var ARC = (function(r, $) {
 				}
 				return string;
 			} catch(e) {
-				RSKYBOX.log.error("run exception = " + e.message, "html5.Base64._etf8_decode");
+				RSKYBOX.log.error("run exception = " + e.message, "Base64._etf8_decode");
 			}
 		}
 	}
